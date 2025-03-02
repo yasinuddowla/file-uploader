@@ -1,6 +1,6 @@
 # File Upload API Documentation
 
-This API allows clients to upload `.nc` (NetCDF) files to a server, storing them in a configurable directory. It uses Bearer token authentication for security.
+This API allows clients to upload files to a server, storing them in a configurable directory. It uses Bearer token authentication for security.
 
 ## Base URL
 
@@ -10,7 +10,7 @@ This API allows clients to upload `.nc` (NetCDF) files to a server, storing them
 
 ### Upload a File
 
-Uploads a `.nc` file to the server.
+Uploads a file to the server.
 
 -   **Method**: `POST`
 -   **Path**: `/bmd-data`
@@ -25,9 +25,9 @@ Uploads a `.nc` file to the server.
 
 #### Request Body
 
-| Field  | Type | Required | Description                         |
-| ------ | ---- | -------- | ----------------------------------- |
-| `file` | File | Yes      | The `.nc` file to upload (max 10MB) |
+| Field  | Type | Required | Description                   |
+| ------ | ---- | -------- | ----------------------------- |
+| `file` | File | Yes      | The file to upload (max 10MB) |
 
 #### Example Request (cURL)
 
@@ -38,7 +38,7 @@ curl -X POST http://{{baseurl}}/api/bmd-data \
 ```
 
 -   Replace `your_fixed_secret_key_here` with the secret key provided by the API administrator.
--   Replace `/path/to/your/file.nc` with the path to your `.nc` file.
+-   Replace `/path/to/your/file.nc` with the path to your file.
 
 #### Success Response
 
@@ -96,9 +96,8 @@ curl -X POST http://{{baseurl}}/api/bmd-data \
 
 ## File Requirements
 
--   **Format**: `.nc` (NetCDF)
+-   **Format**: NetCDF (extension: `.nc`)
 -   **Max Size**: 10MB (configurable by the server administrator)
--   **Naming**: Files are stored with a timestamp prefix (e.g., `1638321234_file.nc`).
 
 ## Notes
 
@@ -109,7 +108,7 @@ curl -X POST http://{{baseurl}}/api/bmd-data \
 ## Troubleshooting
 
 -   **“Unauthorized” Error**: Ensure the `Authorization` header is correct and matches the secret key.
--   **“File type” Error**: Verify the uploaded file has a `.nc` extension and is a valid NetCDF file.
+-   **“File type” Error**: Verify the uploaded file has a extension and is a valid NetCDF file.
 -   **“File too large” Error**: Check that the file size is under 10MB.
 
 ## Contact
